@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "list_categories",
+  "info": {
+    "singularName": "list-category",
+    "pluralName": "list-categories",
+    "displayName": "Список категорий"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "unique": true
+    },
+    "categoryLink": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "imageTabletSrc": {
+      "type": "string"
+    },
+    "viewOnMainPage": {
+      "type": "boolean",
+      "default": false
+    },
+    "imageSrc": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
