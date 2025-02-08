@@ -369,11 +369,40 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAllSpecialistAllSpecialist
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'all_specialists';
+  info: {
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u043E\u0432';
+    pluralName: 'all-specialists';
+    singularName: 'all-specialist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.Component<'specialist.speczialist', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::all-specialist.all-specialist'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
     description: '';
-    displayName: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438';
+    displayName: '\u0423\u0441\u043B\u0443\u0433\u0438 \u0432 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438';
     pluralName: 'categories';
     singularName: 'category';
   };
@@ -415,6 +444,7 @@ export interface ApiListCategoryListCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'list_categories';
   info: {
+    description: '';
     displayName: '\u0421\u043F\u0438\u0441\u043E\u043A \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0439';
     pluralName: 'list-categories';
     singularName: 'list-category';
@@ -430,7 +460,7 @@ export interface ApiListCategoryListCategory
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     imageSrc: Schema.Attribute.String & Schema.Attribute.Required;
-    imageTabletSrc: Schema.Attribute.String;
+    imageTabletSrc: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -449,6 +479,64 @@ export interface ApiListCategoryListCategory
       Schema.Attribute.Private;
     viewOnMainPage: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiMainSpecialistMainSpecialist
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'main_specialists';
+  info: {
+    displayName: '\u0421\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u044B \u043D\u0430 \u0433\u043B\u0430\u0432\u043D\u043E\u0439 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435';
+    pluralName: 'main-specialists';
+    singularName: 'main-specialist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::main-specialist.main-specialist'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    specialists: Schema.Attribute.Component<'specialist.speczialist', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiResultSpecialistsResultSpecialists
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'results_specialists';
+  info: {
+    displayName: '\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u044B \u0440\u0430\u0431\u043E\u0442\u044B \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u043E\u0432';
+    pluralName: 'results-specialists';
+    singularName: 'result-specialists';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.Component<'result-card.rezultat', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::result-specialists.result-specialists'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -961,8 +1049,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::all-specialist.all-specialist': ApiAllSpecialistAllSpecialist;
       'api::category.category': ApiCategoryCategory;
       'api::list-category.list-category': ApiListCategoryListCategory;
+      'api::main-specialist.main-specialist': ApiMainSpecialistMainSpecialist;
+      'api::result-specialists.result-specialists': ApiResultSpecialistsResultSpecialists;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

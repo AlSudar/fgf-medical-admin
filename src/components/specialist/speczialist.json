@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_specialist_speczialist",
+  "info": {
+    "displayName": "Специалист",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "speciality": {
+      "type": "string",
+      "required": true
+    },
+    "experience": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "imgSrc": {
+      "type": "string"
+    },
+    "quote": {
+      "type": "text"
+    }
+  }
+}

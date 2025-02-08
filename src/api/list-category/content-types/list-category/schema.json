@@ -4,7 +4,8 @@
   "info": {
     "singularName": "list-category",
     "pluralName": "list-categories",
-    "displayName": "Список категорий"
+    "displayName": "Список категорий",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +24,8 @@
       "unique": true
     },
     "imageTabletSrc": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "viewOnMainPage": {
       "type": "boolean",

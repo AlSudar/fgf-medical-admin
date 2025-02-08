@@ -1,0 +1,20 @@
+{
+    "kind": "collectionType",
+    "collectionName": "main_specialists",
+    "info": {
+        "singularName": "main-specialist",
+        "pluralName": "main-specialists",
+        "displayName": "Специалисты на главной странице"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "specialists": {
+            "type": "component",
+            "repeatable": true,
+            "component": "specialist.speczialist"
+        }
+    }
+}

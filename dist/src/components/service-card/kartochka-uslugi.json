@@ -2,7 +2,8 @@
     "collectionName": "components_service_card_kartochka_uslugi",
     "info": {
         "displayName": "Карточка услуги",
-        "icon": "doctor"
+        "icon": "doctor",
+        "description": ""
     },
     "options": {},
     "attributes": {
@@ -16,6 +17,10 @@
             "type": "string",
             "required": true,
             "unique": true
+        },
+        "visible": {
+            "type": "boolean",
+            "default": true
         }
     }
 }

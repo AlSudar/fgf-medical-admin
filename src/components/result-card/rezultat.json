@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_result_card_rezultat",
+  "info": {
+    "displayName": "Результат",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "imageSrc": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
