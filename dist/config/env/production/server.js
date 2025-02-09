@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ({ env }) => ({
-    host: env("HOST", "0.0.0.0"),
-    port: env.int("PORT", 8080),
-    url: "http://server.fgfmed.ru",
-    app: {
-        keys: env.array("APP_KEYS"),
-    },
+	host: env("HOST", "0.0.0.0"),
+	port: env.int("PORT", 80),
+	url: "http://server.fgfmed.ru",
+	app: {
+		keys: env.array("APP_KEYS"),
+	},
 });
