@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ({ env }) => ({
     url: "http://api.fgfmed.ru/admin",
     auth: {
-        secret: env("ADMIN_JWT_SECRET"),
+        secret: env("PROD_ADMIN_JWT_SECRET"),
     },
     apiToken: {
         salt: env("API_TOKEN_SALT"),
