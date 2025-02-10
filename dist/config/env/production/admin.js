@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ({ env }) => ({
-    url: "http://admin.fgfmed.ru",
+    url: "http://api.fgfmed.ru/admin",
     auth: {
         secret: env("ADMIN_JWT_SECRET"),
     },

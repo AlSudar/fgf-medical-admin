@@ -1,5 +1,5 @@
 export default ({ env }) => ({
-  url: "http://admin.fgfmed.ru",
+  url: "http://api.fgfmed.ru/admin",
   auth: {
     secret: env("ADMIN_JWT_SECRET"),
   },
