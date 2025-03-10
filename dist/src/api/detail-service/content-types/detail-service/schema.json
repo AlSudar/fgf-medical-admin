@@ -4,7 +4,8 @@
     "info": {
         "singularName": "detail-service",
         "pluralName": "detail-services",
-        "displayName": "Страницы услуг"
+        "displayName": "Страницы услуг",
+        "description": ""
     },
     "options": {
         "draftAndPublish": true
@@ -44,6 +45,11 @@
             "type": "component",
             "repeatable": true,
             "component": "price-list.stoimost"
+        },
+        "results": {
+            "type": "component",
+            "repeatable": true,
+            "component": "result-card.rezultat"
         }
     }
 }

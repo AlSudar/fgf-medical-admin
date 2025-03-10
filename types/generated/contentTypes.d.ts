@@ -476,6 +476,7 @@ export interface ApiDetailServiceDetailService
   extends Struct.CollectionTypeSchema {
   collectionName: 'detail_services';
   info: {
+    description: '';
     displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0443\u0441\u043B\u0443\u0433';
     pluralName: 'detail-services';
     singularName: 'detail-service';
@@ -500,6 +501,7 @@ export interface ApiDetailServiceDetailService
       Schema.Attribute.Private;
     priceList: Schema.Attribute.Component<'price-list.stoimost', true>;
     publishedAt: Schema.Attribute.DateTime;
+    results: Schema.Attribute.Component<'result-card.rezultat', true>;
     service: Schema.Attribute.String & Schema.Attribute.Required;
     services: Schema.Attribute.Relation<'oneToMany', 'api::uslugi.uslugi'>;
     specialists: Schema.Attribute.Relation<
