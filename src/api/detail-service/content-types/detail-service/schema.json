@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "detail_services",
+  "info": {
+    "singularName": "detail-service",
+    "pluralName": "detail-services",
+    "displayName": "Страницы услуг"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "service": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "hero": {
+      "type": "richtext"
+    },
+    "banner": {
+      "displayName": "Баннер",
+      "type": "component",
+      "repeatable": false,
+      "component": "banner.banner"
+    },
+    "specialists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::speczialisty.speczialisty"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::uslugi.uslugi"
+    },
+    "priceList": {
+      "displayName": "Стоимость",
+      "type": "component",
+      "repeatable": true,
+      "component": "price-list.stoimost"
+    }
+  }
+}

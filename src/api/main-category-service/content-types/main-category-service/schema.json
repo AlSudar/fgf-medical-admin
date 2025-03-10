@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_categories_services",
+  "info": {
+    "singularName": "main-category-service",
+    "pluralName": "main-categories-services",
+    "displayName": "Категории услуг на главной"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "categoryServices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::all-category-service.all-category-service"
+    }
+  }
+}

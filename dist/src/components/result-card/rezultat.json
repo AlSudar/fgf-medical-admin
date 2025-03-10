@@ -2,7 +2,8 @@
     "collectionName": "components_result_card_rezultat",
     "info": {
         "displayName": "Результат",
-        "icon": "check"
+        "icon": "check",
+        "description": ""
     },
     "options": {},
     "attributes": {
@@ -10,7 +11,8 @@
             "type": "string"
         },
         "description": {
-            "type": "string"
+            "type": "text",
+            "required": false
         },
         "imageSrc": {
             "type": "string",

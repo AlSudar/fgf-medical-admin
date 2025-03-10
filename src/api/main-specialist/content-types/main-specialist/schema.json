@@ -1,10 +1,11 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "main_specialists",
   "info": {
     "singularName": "main-specialist",
     "pluralName": "main-specialists",
-    "displayName": "Специалисты на главной странице"
+    "displayName": "Специалисты на главной странице",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,9 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "specialists": {
-      "type": "component",
-      "repeatable": true,
-      "component": "specialist.speczialist"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::speczialisty.speczialisty"
     }
   }
 }

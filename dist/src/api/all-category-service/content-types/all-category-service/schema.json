@@ -1,0 +1,21 @@
+{
+    "kind": "collectionType",
+    "collectionName": "all_categories_services",
+    "info": {
+        "singularName": "all-category-service",
+        "pluralName": "all-categories-services",
+        "displayName": "Категории услуг",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "category": {
+            "type": "component",
+            "repeatable": false,
+            "component": "category-service.kategoriya-uslugi"
+        }
+    }
+}

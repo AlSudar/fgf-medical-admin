@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_banner_banner",
+  "info": {
+    "displayName": "Баннер"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "buttonUrl": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

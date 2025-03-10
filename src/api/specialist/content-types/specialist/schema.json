@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "specialists",
+  "info": {
+    "singularName": "specialist",
+    "pluralName": "specialists",
+    "displayName": "Специалисты на странице \"Специалисты\""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "specialists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::speczialisty.speczialisty"
+    }
+  }
+}

@@ -18,11 +18,12 @@
 		"better-sqlite3": "11.3.0",
 		"fs-extra": "^10.0.0",
 		"mime-types": "^2.1.27",
+		"nodemailer": "^6.10.0",
+		"pm2": "5.4.3",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-router-dom": "^6.0.0",
-		"styled-components": "^6.0.0",
-		"pm2": "5.4.3"
+		"styled-components": "^6.0.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20",

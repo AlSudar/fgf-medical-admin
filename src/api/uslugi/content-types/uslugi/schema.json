@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "uslugis",
+  "info": {
+    "singularName": "uslugi",
+    "pluralName": "uslugis",
+    "displayName": "Услуги",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-link.kartochka-s-ssylkoj"
+    }
+  }
+}

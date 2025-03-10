@@ -369,26 +369,62 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAllSpecialistAllSpecialist
+export interface ApiAllCategoryServiceAllCategoryService
   extends Struct.CollectionTypeSchema {
-  collectionName: 'all_specialists';
+  collectionName: 'all_categories_services';
   info: {
-    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u043E\u0432';
-    pluralName: 'all-specialists';
-    singularName: 'all-specialist';
+    description: '';
+    displayName: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438 \u0443\u0441\u043B\u0443\u0433';
+    pluralName: 'all-categories-services';
+    singularName: 'all-category-service';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.Component<
+      'category-service.kategoriya-uslugi',
+      false
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    data: Schema.Attribute.Component<'specialist.speczialist', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::all-specialist.all-specialist'
+      'api::all-category-service.all-category-service'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAlllCategoryServiceAlllCategoryService
+  extends Struct.SingleTypeSchema {
+  collectionName: 'alll_categories_services';
+  info: {
+    displayName: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438 \u0443\u0441\u043B\u0443\u0433 \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 "\u0412\u0441\u0435 \u0432\u0438\u0434\u044B \u0443\u0441\u043B\u0443\u0433"';
+    pluralName: 'alll-categories-services';
+    singularName: 'alll-category-service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categoryService: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::all-category-service.all-category-service'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::alll-category-service.alll-category-service'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -402,7 +438,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
     description: '';
-    displayName: '\u0423\u0441\u043B\u0443\u0433\u0438 \u0432 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438';
+    displayName: '\u0423\u0441\u043B\u0443\u0433\u0438 \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 "\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438"';
     pluralName: 'categories';
     singularName: 'category';
   };
@@ -423,11 +459,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    services: Schema.Attribute.Component<
-      'service-card.kartochka-uslugi',
-      true
-    > &
-      Schema.Attribute.Required;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::uslugi.uslugi'>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -440,52 +472,83 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiListCategoryListCategory
+export interface ApiDetailServiceDetailService
   extends Struct.CollectionTypeSchema {
-  collectionName: 'list_categories';
+  collectionName: 'detail_services';
   info: {
-    description: '';
-    displayName: '\u0421\u043F\u0438\u0441\u043E\u043A \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0439';
-    pluralName: 'list-categories';
-    singularName: 'list-category';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0443\u0441\u043B\u0443\u0433';
+    pluralName: 'detail-services';
+    singularName: 'detail-service';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    categoryLink: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    banner: Schema.Attribute.Component<'banner.banner', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    imageSrc: Schema.Attribute.String & Schema.Attribute.Required;
-    imageTabletSrc: Schema.Attribute.String & Schema.Attribute.Required;
+    hero: Schema.Attribute.RichText;
+    link: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::list-category.list-category'
+      'api::detail-service.detail-service'
     > &
       Schema.Attribute.Private;
+    priceList: Schema.Attribute.Component<'price-list.stoimost', true>;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 100;
-      }>;
+    service: Schema.Attribute.String & Schema.Attribute.Required;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::uslugi.uslugi'>;
+    specialists: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::speczialisty.speczialisty'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    viewOnMainPage: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiMainCategoryServiceMainCategoryService
+  extends Struct.SingleTypeSchema {
+  collectionName: 'main_categories_services';
+  info: {
+    displayName: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438 \u0443\u0441\u043B\u0443\u0433 \u043D\u0430 \u0433\u043B\u0430\u0432\u043D\u043E\u0439';
+    pluralName: 'main-categories-services';
+    singularName: 'main-category-service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categoryServices: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::all-category-service.all-category-service'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::main-category-service.main-category-service'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
 export interface ApiMainSpecialistMainSpecialist
-  extends Struct.CollectionTypeSchema {
+  extends Struct.SingleTypeSchema {
   collectionName: 'main_specialists';
   info: {
+    description: '';
     displayName: '\u0421\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u044B \u043D\u0430 \u0433\u043B\u0430\u0432\u043D\u043E\u0439 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435';
     pluralName: 'main-specialists';
     singularName: 'main-specialist';
@@ -504,20 +567,22 @@ export interface ApiMainSpecialistMainSpecialist
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    specialists: Schema.Attribute.Component<'specialist.speczialist', true>;
+    specialists: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::speczialisty.speczialisty'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiResultSpecialistsResultSpecialists
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'results_specialists';
+export interface ApiSpecialistSpecialist extends Struct.SingleTypeSchema {
+  collectionName: 'specialists';
   info: {
-    displayName: '\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u044B \u0440\u0430\u0431\u043E\u0442\u044B \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u043E\u0432';
-    pluralName: 'results-specialists';
-    singularName: 'result-specialists';
+    displayName: '\u0421\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u044B \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 "\u0421\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u044B"';
+    pluralName: 'specialists';
+    singularName: 'specialist';
   };
   options: {
     draftAndPublish: true;
@@ -526,11 +591,73 @@ export interface ApiResultSpecialistsResultSpecialists
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    data: Schema.Attribute.Component<'result-card.rezultat', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::result-specialists.result-specialists'
+      'api::specialist.specialist'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    specialists: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::speczialisty.speczialisty'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpeczialistySpeczialisty
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'speczialisties';
+  info: {
+    description: '';
+    displayName: '\u0421\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u044B';
+    pluralName: 'speczialisties';
+    singularName: 'speczialisty';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.Component<'specialist.speczialist', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::speczialisty.speczialisty'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUslugiUslugi extends Struct.CollectionTypeSchema {
+  collectionName: 'uslugis';
+  info: {
+    description: '';
+    displayName: '\u0423\u0441\u043B\u0443\u0433\u0438';
+    pluralName: 'uslugis';
+    singularName: 'uslugi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.Component<'card-link.kartochka-s-ssylkoj', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::uslugi.uslugi'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -1049,11 +1176,15 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::all-specialist.all-specialist': ApiAllSpecialistAllSpecialist;
+      'api::all-category-service.all-category-service': ApiAllCategoryServiceAllCategoryService;
+      'api::alll-category-service.alll-category-service': ApiAlllCategoryServiceAlllCategoryService;
       'api::category.category': ApiCategoryCategory;
-      'api::list-category.list-category': ApiListCategoryListCategory;
+      'api::detail-service.detail-service': ApiDetailServiceDetailService;
+      'api::main-category-service.main-category-service': ApiMainCategoryServiceMainCategoryService;
       'api::main-specialist.main-specialist': ApiMainSpecialistMainSpecialist;
-      'api::result-specialists.result-specialists': ApiResultSpecialistsResultSpecialists;
+      'api::specialist.specialist': ApiSpecialistSpecialist;
+      'api::speczialisty.speczialisty': ApiSpeczialistySpeczialisty;
+      'api::uslugi.uslugi': ApiUslugiUslugi;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

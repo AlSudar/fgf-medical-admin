@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "alll_categories_services",
+  "info": {
+    "singularName": "alll-category-service",
+    "pluralName": "alll-categories-services",
+    "displayName": "Категории услуг на странице \"Все виды услуг\""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "categoryService": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::all-category-service.all-category-service"
+    }
+  }
+}
