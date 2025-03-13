@@ -40,6 +40,9 @@
             "type": "component",
             "repeatable": true,
             "component": "result-card.rezultat"
+        },
+        "smallImageSrc": {
+            "type": "string"
         }
     }
 }

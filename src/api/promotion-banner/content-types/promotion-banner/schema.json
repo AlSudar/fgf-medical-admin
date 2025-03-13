@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "promotion_banners",
+  "info": {
+    "singularName": "promotion-banner",
+    "pluralName": "promotion-banners",
+    "displayName": "Баннеры с акциями"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "component",
+      "repeatable": true,
+      "component": "banner-promotion.banner-s-akcziej"
+    }
+  }
+}

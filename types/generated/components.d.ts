@@ -1,17 +1,26 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BannerPromotionBannerSAkcziej extends Struct.ComponentSchema {
+  collectionName: 'components_banner_promotion_banner_s_akcziej';
+  info: {
+    displayName: '\u0411\u0430\u043D\u043D\u0435\u0440 \u0441 \u0430\u043A\u0446\u0438\u0435\u0439';
+  };
+  attributes: {
+    buttonLink: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface BannerBanner extends Struct.ComponentSchema {
   collectionName: 'components_banner_banner';
   info: {
+    description: '';
     displayName: '\u0411\u0430\u043D\u043D\u0435\u0440';
   };
   attributes: {
     buttonUrl: Schema.Attribute.String & Schema.Attribute.Required;
-    description: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 100;
-      }>;
+    description: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -104,6 +113,7 @@ export interface SpecialistSpeczialist extends Struct.ComponentSchema {
     quote: Schema.Attribute.Text;
     results: Schema.Attribute.Component<'result-card.rezultat', true>;
     services: Schema.Attribute.Relation<'oneToMany', 'api::uslugi.uslugi'>;
+    smallImageSrc: Schema.Attribute.String;
     speciality: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -111,6 +121,7 @@ export interface SpecialistSpeczialist extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'banner-promotion.banner-s-akcziej': BannerPromotionBannerSAkcziej;
       'banner.banner': BannerBanner;
       'card-link.kartochka-s-ssylkoj': CardLinkKartochkaSSsylkoj;
       'category-service.kategoriya-uslugi': CategoryServiceKategoriyaUslugi;

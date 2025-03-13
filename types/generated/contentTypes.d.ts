@@ -579,6 +579,35 @@ export interface ApiMainSpecialistMainSpecialist
   };
 }
 
+export interface ApiPromotionBannerPromotionBanner
+  extends Struct.SingleTypeSchema {
+  collectionName: 'promotion_banners';
+  info: {
+    displayName: '\u0411\u0430\u043D\u043D\u0435\u0440\u044B \u0441 \u0430\u043A\u0446\u0438\u044F\u043C\u0438';
+    pluralName: 'promotion-banners';
+    singularName: 'promotion-banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.Component<'banner-promotion.banner-s-akcziej', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::promotion-banner.promotion-banner'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpecialistSpecialist extends Struct.SingleTypeSchema {
   collectionName: 'specialists';
   info: {
@@ -1184,6 +1213,7 @@ declare module '@strapi/strapi' {
       'api::detail-service.detail-service': ApiDetailServiceDetailService;
       'api::main-category-service.main-category-service': ApiMainCategoryServiceMainCategoryService;
       'api::main-specialist.main-specialist': ApiMainSpecialistMainSpecialist;
+      'api::promotion-banner.promotion-banner': ApiPromotionBannerPromotionBanner;
       'api::specialist.specialist': ApiSpecialistSpecialist;
       'api::speczialisty.speczialisty': ApiSpeczialistySpeczialisty;
       'api::uslugi.uslugi': ApiUslugiUslugi;
